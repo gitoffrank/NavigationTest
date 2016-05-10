@@ -49,7 +49,7 @@ class ListenActivity extends Thread{
                 if (pkgName.contains("map")){
                     Toast.makeText(context, "Google Maps is running", Toast.LENGTH_LONG).show();
                     Log.d("aaa","pkgname  " + pkgName);
-                    //Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=35.6895,139.6917&daddr=35.6896,139.6921"));  //Japan
+                    
                     Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=52.3702,4.8952&daddr=52.3703,4.8955")); //Nether
                     context.startActivity(intent);
 
