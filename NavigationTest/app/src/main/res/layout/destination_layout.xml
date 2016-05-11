@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/linearLayout2"
+    android:layout_width="100dp" android:layout_height="100dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#FF0000" android:orientation="vertical"
+    android:layout_gravity="fill_horizontal|fill_vertical"
+
+    >
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="235dp"-->
+        <!--&gt;-->
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--&gt;-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="3">-->
+
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="2">-->
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Activate"
+                android:alpha="0.6"
+                />
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="0.3">-->
+
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

