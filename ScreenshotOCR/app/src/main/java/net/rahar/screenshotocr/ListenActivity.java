@@ -43,7 +43,8 @@ class ListenActivity extends Thread{
             List<AndroidAppProcess> processes = ProcessManager.getRunningAppProcesses();
             for (AndroidAppProcess process:processes) {
                 String pkgName = process.getPackageName();
-                if (pkgName.contains("map") || pkgName.contains("waze")){
+                if (pkgName.contains("map") || pkgName.contains("waze") || pkgName.contains("uber")){
+                //if (pkgName.contains("uber")){
                     Toast.makeText(context, "Google Maps or waze is running", Toast.LENGTH_LONG).show();
                     Log.d("aaa","pkgname  " + pkgName);
 

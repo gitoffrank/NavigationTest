@@ -43,6 +43,8 @@ import android.widget.Toast;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -56,6 +58,7 @@ public class ScreenOCR extends Activity {
     public static String DATA_DIR_PATH;
     String TESS_DATA_DIR;
 
+    public static TextView textView;
     public static int flag=0;
     public static Button btn;
     public static ImageView image;
@@ -88,51 +91,57 @@ public class ScreenOCR extends Activity {
     private class ImageAvailableListener implements ImageReader.OnImageAvailableListener {
         @Override
         public void onImageAvailable(ImageReader reader) {
-            Image image = null;
-            FileOutputStream fos = null;
-            Bitmap bitmap = null;
-
-            try {
-                image = mImageReader.acquireLatestImage();
-                if (image != null) {
-                    Image.Plane[] planes = image.getPlanes();
-                    ByteBuffer buffer = planes[0].getBuffer();
-                    int pixelStride = planes[0].getPixelStride();
-                    int rowStride = planes[0].getRowStride();
-                    int rowPadding = rowStride - pixelStride * mWidth;
-
-                    // create bitmap
-                    bitmap = Bitmap.createBitmap(mWidth + rowPadding / pixelStride, mHeight, Bitmap.Config.ARGB_8888);
-                    bitmap.copyPixelsFromBuffer(buffer);
-
-                    // write bitmap to a file
-                    File file= new File(storeDirectory, "myscreen_" + IMAGES_PRODUCED + ".png");
-                    fos = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-
-                    IMAGES_PRODUCED++;
-                    Log.e(TAG, "captured image: " + IMAGES_PRODUCED);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (fos!=null) {
+            final Handler handler= new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    Image image = null;
+                    FileOutputStream fos = null;
+                    Bitmap bitmap = null;
                     try {
-                        fos.close();
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
+
+                        image = mImageReader.acquireLatestImage();
+                        if (image != null) {
+                            Image.Plane[] planes = image.getPlanes();
+                            ByteBuffer buffer = planes[0].getBuffer();
+                            int pixelStride = planes[0].getPixelStride();
+                            int rowStride = planes[0].getRowStride();
+                            int rowPadding = rowStride - pixelStride * mWidth;
+
+                            // create bitmap
+                            bitmap = Bitmap.createBitmap(mWidth + rowPadding / pixelStride, mHeight, Bitmap.Config.ARGB_8888);
+                            bitmap.copyPixelsFromBuffer(buffer);
+
+                            // write bitmap to a file
+                            File file= new File(storeDirectory, "myscreen_" + IMAGES_PRODUCED + ".png");
+                            fos = new FileOutputStream(file);
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+
+                            IMAGES_PRODUCED++;
+                            Log.e(TAG, "captured image: " + IMAGES_PRODUCED);
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (fos!=null) {
+                            try {
+                                fos.close();
+                            } catch (IOException ioe) {
+                                ioe.printStackTrace();
+                            }
+                        }
+
+                        if (bitmap!=null) {
+                            bitmap.recycle();
+                        }
+
+                        if (image!=null) {
+                            image.close();
+                        }
                     }
                 }
+            }, 5000);
 
-                if (bitmap!=null) {
-                    bitmap.recycle();
-                }
-
-                if (image!=null) {
-                    image.close();
-                }
-            }
         }
     }
 
@@ -218,6 +227,7 @@ public class ScreenOCR extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_ocr);
 
+        textView=(TextView)findViewById(R.id.textView2);
         mProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
 
         btn=(Button)findViewById(R.id.button);

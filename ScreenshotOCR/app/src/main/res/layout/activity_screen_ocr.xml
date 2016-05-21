@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please click START SERVICE button.\n And please run google maps if map doesn't open now.\n You can see Navigation.\n And please return our service. You can see Destination.\n Last, please go to sdcard/Pictures/Screenshots and check screenshot file."
+        android:text=""
         android:id="@+id/textView2"
         android:layout_below="@+id/switch1"
         android:layout_centerHorizontal="true"
