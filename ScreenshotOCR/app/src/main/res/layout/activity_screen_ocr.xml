@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="First of all, please install your face_rideshare package. And start service button on our service. Please test it enough."
         android:id="@+id/textView2"
         android:layout_below="@+id/switch1"
         android:layout_centerHorizontal="true"
@@ -60,7 +60,4 @@
         android:id="@+id/buttonCopy"
         android:layout_below="@+id/textView_last_recognized"
         android:layout_centerHorizontal="true" />
-
-
-
 </RelativeLayout>

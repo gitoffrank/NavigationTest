@@ -62,7 +62,5 @@ public class TapjackingService extends Service {
 //            // Several error may come out with file handling or OOM
 //            e.printStackTrace();
 //        }
-
-
     }
 }

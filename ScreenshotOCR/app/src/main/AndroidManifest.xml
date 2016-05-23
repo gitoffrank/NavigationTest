@@ -46,6 +46,15 @@
                 <action android:name="net.rahar.screenshotocr.TapjackingService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".TopButtonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="net.rahar.screenshotocr.TopButtonService" />
+            </intent-filter>
+        </service>
     </application>
 
 

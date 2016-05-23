@@ -40,8 +40,8 @@ public class BackgroundOCRService extends IntentService {
 
     // These are normalized coordinates of the box that contains the address text
     private float TEXT_LEFT_X = 388f/1440f;
-    //private float TEXT_TOP_LEFT_Y = 352f/2392f;
-    private float TEXT_TOP_LEFT_Y = 200f/2392f;
+    private float TEXT_TOP_LEFT_Y = 352f/2392f;
+    //private float TEXT_TOP_LEFT_Y = 200f/2392f;
     private float TEXT_BOT_LEFT_Y = 808f/2392f;
 
     // This is the normalized y coordinate of the bottom button that contains the "END TRIP" text
@@ -109,8 +109,9 @@ public class BackgroundOCRService extends IntentService {
             Log.v(TAG, "OCR Result button: " + buttonText);
 
             // Checking if the screenshot is valid
-            //if(buttonText != null && buttonText.toLowerCase().contains("end trip")) {
-            if(buttonText != null) {
+            if(buttonText != null && buttonText.toLowerCase().contains("begin trip")) {
+
+            //if(buttonText != null) {
                 // If the screenshot if valid, extracting the text area from the image
                 int x = (int) (TEXT_LEFT_X * width);
                 y = (int) (TEXT_TOP_LEFT_Y * height);
@@ -134,6 +135,7 @@ public class BackgroundOCRService extends IntentService {
                 editor.putString("LASTTEXT", address);
                 editor.commit();
 
+                startService(new Intent(TopButtonService.class.getName()));
             }
             else {
                 // If hte screenshot is invalid - showing notification about invalid screenshot

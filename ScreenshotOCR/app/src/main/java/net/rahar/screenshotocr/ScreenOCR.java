@@ -140,7 +140,7 @@ public class ScreenOCR extends Activity {
                         }
                     }
                 }
-            }, 5000);
+            }, 1500);
 
         }
     }

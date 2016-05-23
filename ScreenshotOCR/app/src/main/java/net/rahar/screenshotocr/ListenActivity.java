@@ -3,6 +3,7 @@ package net.rahar.screenshotocr;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
@@ -43,17 +44,20 @@ class ListenActivity extends Thread{
             List<AndroidAppProcess> processes = ProcessManager.getRunningAppProcesses();
             for (AndroidAppProcess process:processes) {
                 String pkgName = process.getPackageName();
-                if (pkgName.contains("map") || pkgName.contains("waze") || pkgName.contains("uber")){
-                //if (pkgName.contains("uber")){
-                    Toast.makeText(context, "Google Maps or waze is running", Toast.LENGTH_LONG).show();
+                //if (pkgName.contains("map") || pkgName.contains("waze") || pkgName.contains("uber")){
+                if (pkgName.contains("face")){
+                    Toast.makeText(context, "Uber is running", Toast.LENGTH_LONG).show();
                     Log.d("aaa","pkgname  " + pkgName);
 
                     //Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=35.6895,139.6917&daddr=35.6896,139.6921")); //Japan
-                    Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=52.3702,4.8952&daddr=52.3703,4.8955")); //Nether
+//                    Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=52.3702,4.8952&daddr=52.3703,4.8955")); //Nether
+//                    context.startActivity(intent);
+                    Intent intent = context.getPackageManager().getLaunchIntentForPackage("com.rideshare.eugene.face_rideshare");
                     context.startActivity(intent);
                     flag=1;
                     exit=true;
-                    context.startService(new Intent(TapjackingService.class.getName()));
+                    //context.startService(new Intent(TapjackingService.class.getName()));
+                    //context.startService(new Intent(BackgroundOCRService.class.getName()));
                 }
             }
         }
