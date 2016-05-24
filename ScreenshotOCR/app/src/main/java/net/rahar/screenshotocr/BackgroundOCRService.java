@@ -32,6 +32,8 @@ import java.io.IOException;
  * This service handles both screenshot folder monitoring and OCR
  */
 public class BackgroundOCRService extends IntentService {
+
+    public static int next_count=0;
     private static final String TAG = "BackgroundOCRService";
     private static FileObserver fileObserver;
 
@@ -109,9 +111,14 @@ public class BackgroundOCRService extends IntentService {
             Log.v(TAG, "OCR Result button: " + buttonText);
 
             // Checking if the screenshot is valid
-            if(buttonText != null && buttonText.toLowerCase().contains("begin trip")) {
-
-            //if(buttonText != null) {
+            if(buttonText != null && buttonText.toLowerCase().contains("arrived")) {
+                if (next_count==0) {
+                    startService(new Intent(TopButtonService.class.getName()));
+                    next_count=1;
+                }
+            }
+            else if(buttonText != null && buttonText.toLowerCase().contains("end trip")) {
+                //if(buttonText != null) {
                 // If the screenshot if valid, extracting the text area from the image
                 int x = (int) (TEXT_LEFT_X * width);
                 y = (int) (TEXT_TOP_LEFT_Y * height);
@@ -121,7 +128,7 @@ public class BackgroundOCRService extends IntentService {
                 baseApi.setImage(addressPart);
                 String address = baseApi.getUTF8Text();
                 Log.v(TAG, "OCR Result ADDRESS: " + address);
-
+               // Toast.makeText(this, "Destination:"+address, Toast.LENGTH_LONG).show();
                 String textView2=ScreenOCR.textView.getText().toString();
                 textView2=textView2+address;
 
@@ -134,8 +141,6 @@ public class BackgroundOCRService extends IntentService {
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("LASTTEXT", address);
                 editor.commit();
-
-                startService(new Intent(TopButtonService.class.getName()));
             }
             else {
                 // If hte screenshot is invalid - showing notification about invalid screenshot

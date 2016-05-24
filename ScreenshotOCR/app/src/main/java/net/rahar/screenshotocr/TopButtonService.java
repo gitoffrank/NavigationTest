@@ -32,7 +32,8 @@ public class TopButtonService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Toast.makeText(this, "TopButtonService start", Toast.LENGTH_LONG).show();
+        //stopService(new Intent(getApplicationContext(), BackgroundOCRService.class));
+        Toast.makeText(this, "TopButtonService start! Please Click next button!", Toast.LENGTH_LONG).show();
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
         chatHead = new ImageView(this);
@@ -56,10 +57,10 @@ public class TopButtonService extends Service {
         chatHead.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 {
+                    stopSelf();
                     Log.e("CLICK", "CLICKED ON Button!!");
                     Toast.makeText(getApplicationContext(), "CLICKED ON Button", Toast.LENGTH_SHORT).show();
                     chatHead.setImageResource(R.drawable.next);
-
 
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
