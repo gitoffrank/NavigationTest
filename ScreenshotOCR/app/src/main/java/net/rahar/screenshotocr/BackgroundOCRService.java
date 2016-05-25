@@ -151,6 +151,16 @@ public class BackgroundOCRService extends IntentService {
             Log.e(TAG, "Rotate or coversion failed: " + e.toString());
         }
 
+//        File fdelete=new File(pathToImage);
+//        if (fdelete.exists()){
+//            if (fdelete.delete()){
+//                Log.e(TAG, "File Deleted : " + pathToImage);
+//            }
+//            else{
+//                Log.e(TAG, "File Deleted Failed : " + pathToImage);
+//            }
+//        }
+
         File fdelete=new File(pathToImage);
         if (fdelete.exists()){
             if (fdelete.delete()){

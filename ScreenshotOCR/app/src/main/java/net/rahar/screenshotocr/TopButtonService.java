@@ -51,8 +51,8 @@ public class TopButtonService extends Service {
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.BOTTOM | Gravity.RIGHT;
-        params.x = -20;
-        params.y = 20;
+        params.x = 0;
+        params.y = 0;
         params.type=WindowManager.LayoutParams.TYPE_TOAST;
         chatHead.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

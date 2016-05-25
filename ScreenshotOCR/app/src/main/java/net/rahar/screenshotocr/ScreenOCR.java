@@ -34,6 +34,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.OrientationEventListener;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -361,6 +362,11 @@ public class ScreenOCR extends Activity {
         }
     }
 
+//    @Override
+//    public void onAttachedToWindow(){
+//        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+//        super.onAttachedToWindow();
+//    }
     /****************************************** UI Widget Callbacks *******************************/
     private void startProjection() {
         startActivityForResult(mProjectionManager.createScreenCaptureIntent(), REQUEST_CODE);
