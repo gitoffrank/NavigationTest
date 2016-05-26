@@ -15,7 +15,7 @@ import com.github.dubu.lockscreenusingservice.SharedPreferencesUtil;
  * Created by DUBU on 15. 5. 20..
  */
 public class MainActivity extends ActionBarActivity {
-    private SwitchCompat mSwitchd = null;
+    private SwitchCompat mSwitchd  = null;
     private Context mContext = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
