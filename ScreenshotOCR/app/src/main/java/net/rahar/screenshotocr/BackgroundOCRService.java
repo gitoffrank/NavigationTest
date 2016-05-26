@@ -21,6 +21,7 @@ import android.os.FileObserver;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
@@ -174,6 +175,7 @@ public class BackgroundOCRService extends IntentService {
 
     private void startDirMonitor() {
         Log.d(TAG, "Starting dir monitor");
+
 
         // Getting the screenshot folder path
         // NOTE THAT ON DIFFERENT DEVICES THIS MIGHT BE DIFFERENT, ADJUST ACCORDINGLY
