@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="12be5409720ac7119cd6c2c7c55d2b0b37eb113c">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bdb79aa2ca772f72e176c14994739208dc880b25\classes.dex" />
+    </item>
+    <item
+        jar="D:\DevelopmentTool\Android\Android SDK\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-22.1.1_8f79b9da5607692a3fe4247e0ee89985e0254930\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-22.1.1_3b3920cac6bc5c4db3e85127799e3f77515f03bf\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-22.1.1_8a07ac66ea37da0cdf3cc98d8dd738bd6a386064\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\exploded-aar\com.romainpiel.shimmer\library\1.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="605019d3e4be636f5dd74c83d05198994e3a2ce9">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.romainpiel.shimmer-library-1.4.0_0a08202a2b41d9c02865806a402395de56bc958e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="5c438273358a4315377c6e62641d7f6aef33fc51">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_eb224cb876e5aa52c4e0493c109669267aa49d90\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_f70bd74abba88c5aec626d27da36b65c5be3fb03\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="C:\Users\Dodobal-2\Downloads\aaa\aaa\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-22.1.1_5c71aa842597300168a2605aeab67422cd2b8ba4\classes.dex" />
+    </item>
+
+</items>
