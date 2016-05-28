@@ -12,23 +12,28 @@ import android.content.Intent;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
 import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
+
+    SampleAlarmReceiver alarm = new SampleAlarmReceiver();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
-        PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakelockTag");
-        wakeLock.acquire();
+       getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
 
-        AlarmManager alarmMgr=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent inten = new Intent(this, MyIntentService.class);
-        PendingIntent pi= PendingIntent.getActivity(this, 0, inten, 0);
-        alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, 100, pi);
+    public void Start(View v){
+        alarm.setAlarm(this);
+    }
+
+    public void Stop(View v){
+        alarm.cancelAlarm(this);
     }
 }
